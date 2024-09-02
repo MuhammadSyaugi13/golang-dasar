@@ -6,7 +6,7 @@ type HasName interface {
 	GetName() string
 }
 
-func SayHello(value HasName){
+func SayHello(value HasName) {
 	fmt.Println("Hello", value.GetName())
 }
 
@@ -16,6 +16,10 @@ type Person struct {
 
 func (person Person) GetName() string {
 	return person.name
+}
+
+func (person Person) Jalan() string {
+	return person.name + " sedang berjalan"
 }
 
 type Animal struct {
@@ -29,8 +33,9 @@ func (animal Animal) GetName() string {
 func main() {
 	person := Person{name: "ogi"}
 	SayHello(person)
+	fmt.Println(person.Jalan())
 
 	/**/
-	animal :=  Animal{Name: "Kucing"}
+	animal := Animal{Name: "Kucing"}
 	SayHello(animal)
 }

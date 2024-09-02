@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"golang.org/x/text/message"
+)
 
 func getPanic() {
 	message := recover()
@@ -8,7 +12,10 @@ func getPanic() {
 }
 
 func startApp(value bool) {
-	defer getPanic()
+	defer func() {
+		messageRecover := recover()
+		fmt.Println(messageRecover)
+	}
 	if value {
 		panic("Ups error")
 	}
